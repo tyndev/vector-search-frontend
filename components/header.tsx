@@ -16,7 +16,7 @@ export default function Header() {
             </div>
           </ Link>
           {/* #TODO: Move to navlinks.tsx and make dynamic */}
-          <div className="ml-auto flex w-full space-x-2 sm:justify-end">
+          <nav className="ml-auto flex w-full space-x-2 sm:justify-end">
             <div className="hidden space-x-2 md:flex">
               <Link className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium hover:underline h-10 px-2 py-2" href="#">
                 About
@@ -34,7 +34,7 @@ export default function Header() {
                 <Link href="/login">User</Link>
               </Button>
             </div>
-          </div>
+          </nav>
         </div>
       </div>
     <Separator />  
