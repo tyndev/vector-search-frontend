@@ -1,11 +1,10 @@
+// 'https://vector-search-backend.onrender.com/', 
 
 export default async function getData() {
-    const res = await fetch('https://vector-search-backend.onrender.com/')
+  const res = await fetch(
+    'http://127.0.0.1:8000', 
+    { cache: 'no-store' }
+  ) 
     
-    if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
-        throw new Error('Failed to fetch data')
-      }
-     
   return res.json();
 }
