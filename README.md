@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is the frontend of a vector search project. The backend can be found at [vector-search-backend](https://github.com/tyndev/vector-search-backend).  
 
-## Getting Started
 
-First, run the development server:
+## Folder Structure Reminders
+`/app/`
+This contains the routes of the application including their layout and page files.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+`/components/server/`
+This contains the `server components` that make up a particular page or layout. Some can be used across multiple routes. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`/components/client/`
+This contains the `client components` that make up a particular page or layout. Some can be used across multiple routes. 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`/components/ui/`
+These are the primitives such as buttons that make up the `components`. 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+`/lib/actions/`
+This contains `server actions` which can be used in either `client components` or `server components` and are async functions executed `server side` for handling things like form submissions and data mutations.
 
-## Learn More
+`/lib/utils.ts`
+This could grow into justifying its own folder. 
 
-To learn more about Next.js, take a look at the following resources:
+`/lib/database/`
+This may go away if I end up thinking database interactions can be located in the `actions` folder.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`/lib/hooks/`
+Any react hooks that would be used on the client side. 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+`/public/`
 
-## Deploy on Vercel
+`/styles/`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

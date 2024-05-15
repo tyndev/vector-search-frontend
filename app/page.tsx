@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import getData from "@/components/getData";
-import { SearchBox } from "@/components/searchBox";
+import { SearchForm } from "@/components/searchForm";
 
 export default async function Home() {
   const data = await getData()
@@ -15,7 +15,7 @@ export default async function Home() {
           <h2> {data.message} </h2>
         </div>
         <div className="container pt-4 px-4 md:px-6">
-          <SearchBox/>
+          <SearchForm/>
         </div>
       </section>
 
