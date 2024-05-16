@@ -29,7 +29,9 @@ export default function RootLayout({
         <div className="flex flex-col min-h-screen">
           {/* #TODO: Make header nav mobile responsive. */}
           <Header />
-          <main className="flex flex-col flex-1 bg-muted/50">{children}</main>
+          <main className="flex flex-col flex-1 bg-muted/50">
+            {children}
+          </main>
           <Footer />
         </div>
       </body>

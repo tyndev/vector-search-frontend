@@ -1,9 +1,10 @@
 "use client";
 
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
-// import { createTodo } from "@/app/actions"; //TODO
+import { useFormStatus, useFormState } from "react-dom";
+import { getSearchResults } from "@/lib/actions/get-search-results";
 
+
+import { Label } from "@/components/ui/label"; 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
@@ -12,6 +13,7 @@ const initialState = {
   message: "",
 };
 
+// TODO: Move to components?
 function SubmitButton() {
   const { pending } = useFormStatus();
   
@@ -23,17 +25,17 @@ function SubmitButton() {
 }
 
 export function SearchForm() {
-  // const [state, formAction] = useActionState()
+  const [state, formAction] = useFormState(getSearchResults, initialState)
+
   return (
-    <div className="grid w-full gap-2">
-    {/* TODO: <form action={formAction}></form> */}
-      <Textarea placeholder="Type your message here."/>
-      <Button asChild>
-          <Link href="http://127.0.0.1:8000/search?query=$testing123">
-          {/* <Link href="https://vector-search-backend.onrender.com/search?query=$testing123"> */}
-            Click to Search Vector Space
-          </Link> 
-        </Button>
-    </div>
+    <form className="grid w-full gap-2" action={formAction}>
+      <Label htmlFor="search">Search</Label>
+      <Textarea id="search" name="search" placeholder="Type your semantic query here." required />
+      <SubmitButton />
+      <p aria-live="polite" className="sr-only" role="status">
+        {/* Accessibility element announcing form state dynamically */}
+        {state?.message}
+      </p>
+    </form>
   )
 }

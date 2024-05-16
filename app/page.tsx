@@ -17,6 +17,10 @@ export default async function Home() {
         <div className="container pt-4 px-4 md:px-6">
           <SearchForm/>
         </div>
+        <div className="container pt-4 px-4 md:px-6">
+          <h2> Backend Form Response </h2>
+        </div>
+        
       </section>
 
   );
