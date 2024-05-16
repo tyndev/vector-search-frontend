@@ -1,10 +1,8 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import getData from "@/components/getData";
-import { SearchForm } from "@/components/searchForm";
+import GetData from "@/components/GetData";
+import { SearchForm } from "@/components/SearchForm";
 
 export default async function Home() {
-  const data = await getData()
+  const data = await GetData()
 
   return (
 
