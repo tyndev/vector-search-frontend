@@ -30,3 +30,7 @@ Any react hooks that would be used on the client side.
 
 `/styles/`
 
+## File Naming
+**PascalCase** - for Components and Classes. 
+**camelCase** - for functions, instances, hooks, and non-component files.
+
