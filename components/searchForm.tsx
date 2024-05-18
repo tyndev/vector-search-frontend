@@ -1,42 +1,44 @@
-"use client";
+'use client';
 
-import { useFormStatus, useFormState } from "react-dom";
-import { getSearchResults } from "@/lib/actions/get-search-results";
-
-import { Label } from "@/components/ui/label"; 
+import { debounce } from "@lib/utils"
+import { Search as LucideSearch } from "lucide-react";
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import { Label } from "./ui/label";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { useEffect } from "react";
+import { Textarea } from "./ui/textarea";
 
-const initialState = {
-  message: "",
-};
+export default function SearchForm({ placeholder }: { placeholder: string }) {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+  const debounceHandleSearch = debounce(handleSearch, 300);
 
-// TODO: Move to components?
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  
+  function handleSearch(term: string) {
+    console.log(`Searching... ${term}`);
+
+    const params = new URLSearchParams(searchParams);
+    if (term) {
+      params.set('query', term);
+    } else {
+      params.delete('query');
+    }
+    replace(`${pathname}?${params.toString()}`);
+  }
+
   return (
-    <Button type="submit" aria-disabled={pending}>
-      Click to Search Vector Space
-    </Button>
+    <div className="grid w-full gap-2">
+      <Label htmlFor="search" className="sr-only">Search</Label>
+      <Textarea
+        placeholder={placeholder}
+        onChange={(e) => {
+          debounceHandleSearch(e.target.value);
+        }}
+        defaultValue={searchParams.get('query')?.toString()} // Needed for Bookmarking, but only for Query, not yet future Filters.
+      />
+      <Button type="submit">
+      <LucideSearch className="mr-2 h-4 w-4" />
+        Click to Search Vector Space #TODO - Make this Submit to Get Results
+      </Button>
+    </div>
   );
-}
-
-export function SearchForm() {
-  const [state, formAction] = useFormState(getSearchResults, initialState)
-  
-
-  return (
-    <form className="grid w-full gap-2" action={formAction}>
-      <Label htmlFor="search">Search</Label>
-      <Textarea id="search" name="search" placeholder="Type your semantic query here." required />
-      <SubmitButton />
-      
-      <p aria-live="polite" className="sr-only" role="status">
-        {/* Accessibility element announcing form state dynamically */}
-        {state?.message}
-      </p>
-    </form>
-  )
 }
