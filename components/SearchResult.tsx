@@ -7,27 +7,28 @@ import {
     ExternalLink,
   } from "lucide-react"
 
-  import { Button } from "@components/ui/button"
-  import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-  } from "@components/ui/card"
-  import {
-    DropdownMenu,
-    DropdownMenuCheckboxItem,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-  } from "@components/ui/dropdown-menu"
-  import { Separator } from "@components/ui/separator"
-  
-  export function SearchResult() {
+import { Button } from "@components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@components/ui/card"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@components/ui/dropdown-menu"
+import { Separator } from "@components/ui/separator"
+
+  export async function SearchResult() {
     return (
+
       <Card className="grid w-full gap-2">
         <CardHeader className="grid grid-cols-[1fr_110px] items-start gap-4 space-y-0">
           <div className="space-y-1">

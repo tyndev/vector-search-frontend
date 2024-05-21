@@ -3,9 +3,9 @@
 import { debounce } from "@lib/utils"
 import { Search as LucideSearch } from "lucide-react";
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
-import { Label } from "./ui/label";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "./ui/textarea";
+import { Label } from "@components/ui/label";
+import { Button } from "@components/ui/button";
+import { Textarea } from "@components/ui/textarea";
 
 export default function SearchForm({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams();
@@ -36,7 +36,7 @@ export default function SearchForm({ placeholder }: { placeholder: string }) {
         defaultValue={searchParams.get('query')?.toString()} // Needed for Bookmarking, but only for Query, not yet future Filters.
       />
       <Button type="submit">
-      <LucideSearch className="mr-2 h-4 w-4" />
+        <LucideSearch className="mr-2 h-4 w-4" />
         Click to Search Vector Space #TODO - Make this Submit to Get Results
       </Button>
     </div>
