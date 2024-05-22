@@ -1,9 +1,15 @@
 import { Lightbulb } from "lucide-react"
 import { Button } from "@components/ui/button";
 
-async function getSearchTips(query: string) {
+export type Tip = {
+    id: string; 
+    tip: string;
+  };
+
+async function getSearchTips(query: string):  Promise<Tip[] | { error: string }> {
     if (!query) {
-        return <></>}
+        return [];
+    }
 
   try {       
       const encodedQuery = encodeURIComponent(query)
@@ -32,13 +38,18 @@ export default async function SearchTips({
   }) {
     const tipsData = await getSearchTips(query)
 
+    if ('error' in tipsData) {
+        return <div>Error: {tipsData.error}</div>;
+    }
+
     const [tip] = tipsData
     
     return (
         <div>
             {tipsData.map((tip) => (
                 <Button className="mx-2" key={tip.id} variant="secondary">
-                    <Lightbulb className="mr-2 h-4 w-4" />{tip.tip}
+                    <Lightbulb className="mr-2 h-4 w-4" />
+                    {tip.tip}
                 </Button>
             ))}
         </div>
