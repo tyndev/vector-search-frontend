@@ -31,7 +31,6 @@ export default async function Home({
         </div>
         <div className="container pt-4 px-4 md:px-6">
           {query ? <SearchTips query={query} /> : <></>}
-          
           {/* <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
             <SearchResult query={query} currentPage={currentPage} />
           </Suspense> */}
@@ -45,7 +44,7 @@ export default async function Home({
         <div className="container pt-12 px-4 md:px-6">
           <SearchFormOld/>
         </div>
-        
+
       </section>
 
   );
